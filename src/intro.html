@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="intro.css">
+
+    <title>Flood Fill Algorithm</title>
+</head>
+<body>
+
+    <!-- <video autoplay muted loop id="myVideo" style="z-index: -1;" >
+        <source src="background.mp4" type="video/mp4">
+    </video> -->
+
+    <div class="navbar">
+        <div id="title">Flood Fill</div>
+   
+        <div id="name">Nguyễn Ngọc Lam Thanh - B2012255 </div> <a href="./uploadImg.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="display: inline; width: 50px;"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg></a>
+        <!-- <i class="fa-solid fa-arrow-right" style="color: #ffffff; width: 20px; display: block; height: 20px;"></i> -->
+    </div>
+
+        
+    <div id="main-content">
+        
+        <div id="left" style="display: none">
+            <div id="show-img">
+                <div id="show-img-div" style="text-align: center;">
+                    <div id="div-canvas">
+                        <canvas id="canvas" ></canvas>
+                    </div>
+                    <!-- <div id="div-canvas">
+                        <canvas id="canvas-display" ></canvas>
+                    </div> -->
+                </div>
+            </div>
+            <br>
+        </div> 
+        
+        <div id="display">
+            <div id="index-c"></div>
+            <div id="index-r"></div>
+            <div class="container"></div>
+        </div>  
+
+        <div id="right-content">
+            <div id="exe-code">
+                <button id="showcode">
+                    <img src="./271239.png" alt="" width="30px">
+                </button>
+    
+                <div id="code">
+                    <div class="codecmd" id="code-1">1 &nbsp <span style="color: deeppink;">async function</span> <span style="color: rgb(0, 208, 31);">floodFill</span>(start, direction, currentColor, newColor)&#123;</div>
+                    <div class="codecmd" id="code-2">2 &emsp;&emsp;queue.push(start);	</div>
+        
+                    <div class="codecmd" id="code-3">3 &emsp;&emsp;<span style="color: deeppink;">while</span>(queue.length > 0 && isPlay === true)  	&#123;</div>
+                    <div class="codecmd" id="code-4">4 &emsp;&emsp;<span style="color: deeppink;">var</span> temp = queue.shift();</div>
+                    
+                    <div class="codecmd" id="code-5">5 &emsp;&emsp;<span style="color: deeppink;">var</span> tempX = getCoor(temp).x; </div>
+                    <div class="codecmd" id="code-6">6 &emsp;&emsp;<span style="color: deeppink;">var</span> tempY = getCoor(temp).y;</div>
+        
+                    <div class="codecmd" id="code-7">7 &emsp;&emsp;if (mark[temp] == true) &emsp;continue;</div>
+                    <div class="codecmd" id="code-8">8 &emsp;&emsp;mark[temp] = true;</div>
+                    <div class="codecmd" id="code-9">9 &emsp;&emsp;<span style="color: deeppink;">var</span> element = document.getElementById(temp)</div>
+                    <div class="codecmd" id="code-10">10&emsp;&emsp;element.style.backgroundColor = ((newColor))</div>
+                    <br>
+                    <div class="codecmd" id="code-11">11&emsp;&emsp;<span style="color: deeppink;">if</span> (<span style="color: rgb(0, 208, 31);">isValid</span>(tempX - 1, tempY)) <br>&emsp;&emsp;&emsp;&emsp;{
+                        queue.push(getID(tempX - 1, tempY));
+                    }</div>
+                    <br>
+                    <div class="codecmd" id="code-12">12&emsp;&emsp;<span style="color: deeppink;">if</span> (<span style="color: rgb(0, 208, 31);">isValid</span>(tempX + 1, tempY)) <br>&emsp;&emsp;&emsp;&emsp;{
+                        queue.push(getID(tempX + 1, tempY));
+                    }</div>
+                    <br>
+                    <div class="codecmd" id="code-13">13&emsp;&emsp;<span style="color: deeppink;">if</span> (<span style="color: rgb(0, 208, 31);">isValid</span>(tempX, tempY - 1)) <br>&emsp;&emsp;&emsp;&emsp;{
+                        queue.push(getID(tempX, tempY - 1));
+                    }</div>
+                    <br>
+                    <div class="codecmd" id="code-14">14&emsp;&emsp;<span style="color: deeppink;">if</span> (<span style="color: rgb(0, 208, 31);">isValid</span>(tempX, tempY + 1)) <br>&emsp;&emsp;&emsp;&emsp;{
+                        queue.push(getID(tempX, tempY + 1));
+                    }</div>
+                </div>  
+            </div>
+
+
+            
+            <div id="result">
+                <div id="queue-display">
+                    <div class="result-div" >Queue </div>
+                    <div class="result-div" style="overflow-wrap: break-word; color: 'whitesmoke';" id="queue" ></div>
+                </div>
+        <!-- 
+                <div style="display: flex;" id="xy">
+                    <div class="result-div">ID</div>
+                    <div class="result-div">ID</div>
+                    <div class="result-div">ID</div>
+                </div> -->
+                
+                
+
+                <div style=" border: 1px solid 'red'; color: rgb(0, 0, 0);" id="xy-re">
+                    <div class="result-div" style=" display: inline-block;">ID</div><div class="result-div" id="stt" style="color: blue; display: inline-block;"></div>
+                    <div class="result-div" style=" display: inline-block;">X</div><div class="result-div" id="x-coor" style="color: rgb(34, 119, 56); display: inline-block;"></div>
+                    <div class="result-div" style=" display: inline-block;">Y</div><div class="result-div" id="y-coor" style="color: rgb(34, 119, 56); display: inline-block;"></div>
+                    <div class="result-div"  id="a" style="font-size: 20px;"></div>
+                </div>
+            </div> 
+            
+            <div id="exe-color">
+                <span style="padding-left: 10px; color:brown; font-size: 30px; font-weight: 800; font-family: Arial, Helvetica, sans-serif; background-color: none;">Color</span>
+                <label id="a" for="colorpicker"><input type="color" id="colorpicker" value="#ff0000"></label>        
+            </div>
+            
+        </div>
+    </div>
+
+    <div id="controller">
+ 
+            <button id="upload" class="btn" onclick="document.getElementById('uploader').click();">Upload a file</button>
+            <input type="file" name="uploader" id="uploader" style="display: none;"/>
+        
+
+        <button class="btn" id="randomMaze" onclick="maze()">Random Map</button>
+        <!-- <button class="btn" id="startPixel" >Chose Start</button> -->
+        <button class="btn" id="play" style="display: '';"> <img src="../img/play-buttton.png" alt="" width="20px"></button>
+        <button class="btn" id="pause" style="display: none;"><img src="../img/pause.png" alt="" width="20px" ></button>   
+        <button class="btn" id="reset">Reset</button>  
+        <!-- <button class="btn" id="edit">Edit mode</button>             -->
+
+        <div style="margin-top: 20px; text-align: center; display: inline-block; font-size: 20px; margin-left: 50px;">
+           <p style="color: white; font-weight: bold; font-family: Arial, Helvetica, sans-serif; display: inline-block; ">Size</p>
+            <input type="range" name="" id="size" value="10" min="1" max="20" step="1">
+
+        <p id="sizeNumber">10</p>
+
+        <p style="color: white; font-weight: bold; font-family: Arial, Helvetica, sans-serif; display: inline-block; margin-left: 40px;">Speed</p>
+            <input type="range" name="" id="speed" value="1" min="1" max="20" step="1">
+
+        <p id="speedNumber">x1</p>
+        </div>
+    </div>
+
+    <script src="intro.js" type="text/javascript"></script>
+    <!-- <script src="./ex.js" type="text/javascript"></script> -->
+</body>
+</html>
